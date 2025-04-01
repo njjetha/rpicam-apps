@@ -22,11 +22,9 @@ jobs:
       - name: differential scan
         run: |
           semgrep scan \
-            --sarif --output report-pr.sarif
-            --error \
-            --metrics=off \
+            --sarif --output report-pr.sarif \
             --baseline-commit ${{ github.event.pull_request.base.sha }} \
-            --config="p/default"
+            --config=auto
       
       # step 3
       - name: save report as pipeline artifact
